@@ -41,7 +41,7 @@ FEATURES_TO_REMOVE = [
 # TITLE
 # =========================
 st.title("🧠 Alzheimer's Disease Prediction Application")
-st.markdown("Machine Learning–based Clinical Decision Support Demo")
+st.markdown("Machine Learning–based Clinical Decision Support")
 
 # =========================
 # TABS
@@ -295,3 +295,4 @@ with tab2:
             st.success("✅ No Alzheimer’s Disease Detected")
 
         st.info(f"Probability of Alzheimer’s Disease: **{probability:.2f}**")
+
