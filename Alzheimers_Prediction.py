@@ -76,11 +76,16 @@ with tab1:
     st.write(f"Shape: {df.shape}")
     st.dataframe(df.head())
 
+    st.subheader("Column Information")
+    st.write(df.dtypes)
+
     # =========================
     # FEATURE REMOVAL
     # =========================
-    removed_cols = [c for c in FEATURES_TO_REMOVE if c in df.columns]
-    df = df.drop(columns=removed_cols)
+    removed = [col for col in FEATURES_TO_REMOVE if col in df.columns]
+    if removed:
+        st.warning(f"Removing non-medical / weak features: {removed}")
+        df = df.drop(columns=removed)
 
     # =========================
     # EDA
