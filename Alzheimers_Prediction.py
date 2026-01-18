@@ -131,8 +131,15 @@ with tab1:
     # Handle missing values
     X = X.fillna(X.median())
 
-    # Keep numeric only
-    X = X.select_dtypes(include=np.number)
+    # Age binning
+    if "Age" in X.columns:
+        X["Age_binned"] = pd.cut(
+            X["Age"], bins=[0, 60, 75, 100],
+            labels=["Young", "Middle", "Old"]
+        )
+
+    # One-hot encoding
+    X = pd.get_dummies(X, drop_first=True)
 
     # Train-test split
     X_train, X_test, y_train, y_test = train_test_split(
